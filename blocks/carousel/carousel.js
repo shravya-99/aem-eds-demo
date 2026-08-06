@@ -50,22 +50,49 @@ function buildCard(row) {
   const paragraphs = bodyCell ? splitIntoLines(bodyCell) : [];
   const badge = paragraphs.find((p) => !p.querySelector('a') && p.querySelector('strong'));
   const titlePara = paragraphs.find((p) => p.querySelector('a'));
+  const priceLine = paragraphs.find((p) => p !== badge && p !== titlePara);
 
   if (badge) {
     badge.className = 'carousel-card-badge';
     imageCell?.append(badge);
   }
 
+  // Price line is authored as "<price> for <n> nights · <rating>"; the
+  // rating moves up next to the title, matching Airbnb's card layout.
+  let ratingText = '';
+  if (priceLine) {
+    const text = priceLine.textContent;
+    const separatorIndex = text.indexOf('·');
+    const priceText = separatorIndex === -1 ? text : text.slice(0, separatorIndex).trim();
+    if (separatorIndex !== -1) ratingText = text.slice(separatorIndex + 1).trim();
+
+    const [amount, ...rest] = priceText.trim().split(' ');
+    priceLine.textContent = '';
+    const amountEl = document.createElement('span');
+    amountEl.className = 'carousel-card-price-amount';
+    amountEl.textContent = amount;
+    priceLine.append(amountEl, ` ${rest.join(' ')}`);
+    priceLine.classList.add('carousel-card-meta');
+  }
+
   if (titlePara) {
     const title = document.createElement('h3');
     title.className = 'carousel-card-title';
-    title.append(...titlePara.childNodes);
+
+    const titleText = document.createElement('span');
+    titleText.className = 'carousel-card-title-text';
+    titleText.append(...titlePara.childNodes);
+    title.append(titleText);
+
+    if (ratingText) {
+      const rating = document.createElement('span');
+      rating.className = 'carousel-card-rating';
+      rating.textContent = ratingText;
+      title.append(rating);
+    }
+
     titlePara.replaceWith(title);
   }
-
-  paragraphs
-    .filter((p) => p !== badge && p !== titlePara)
-    .forEach((p) => p.classList.add('carousel-card-meta'));
 
   if (imageCell) {
     const favorite = document.createElement('span');

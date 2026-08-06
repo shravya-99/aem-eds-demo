@@ -134,6 +134,9 @@
 }
 
 .carousel-card-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
   margin: 0;
   font-size: var(--body-font-size-s);
   font-weight: 600;
@@ -143,13 +146,35 @@
   color: var(--text-color);
 }
 
+.carousel-card-title-text {
+  min-width: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.carousel-card-rating {
+  flex-shrink: 0;
+  margin-left: auto;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
 .carousel-card-meta {
   margin: 4px 0 0;
   font-size: var(--body-font-size-xs);
   color: var(--dark-color);
 }
 
+.carousel-card-price-amount {
+  font-weight: 700;
+  text-decoration: underline;
+  color: var(--text-color);
+}
+
 .carousel-seeall-card {
+  align-self: flex-start;
   aspect-ratio: 1 / 1;
 }
 
