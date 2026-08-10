@@ -48,13 +48,13 @@
   :root {
     /* nav height */
     --nav-height: 251px;
-    --content-gutter: 40px;
+    --content-gutter: 32px;
   }
 }
 
 @media (width >= 1128px) {
   :root {
-    --content-gutter: 80px;
+    --content-gutter: 48px;
   }
 }
 

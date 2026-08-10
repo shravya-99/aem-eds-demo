@@ -3,10 +3,12 @@ footer {
   font-size: var(--body-font-size-xs);
 }
 
+/* edge-pinned padding, not a centered content column: the header uses the same
+   pattern, so the two stay aligned at every viewport width instead of the
+   footer drifting inward past the header once the page exceeds max-width */
 footer .footer>div {
-  margin: auto;
-  max-width: 1200px;
-  padding: 48px 24px 32px;
+  box-sizing: border-box;
+  padding: 48px var(--content-gutter) 32px;
 }
 
 footer .footer-columns {
@@ -59,6 +61,6 @@ footer .footer p a {
 
 @media (width >=900px) {
   footer .footer>div {
-    padding: 56px 40px 32px;
+    padding-top: 56px;
   }
 }
