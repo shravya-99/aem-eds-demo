@@ -12,16 +12,16 @@
 
 :root {
   /* colors */
-  --background-color: white;
+  --background-color: #F2F2F2;
   --light-color: #f8f8f8;
   --dark-color: #505050;
-  --text-color: #131313;
+  --text-color: #222;
   --link-color: #3b63fb;
   --link-hover-color: #1d3ecf;
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --body-font-family: inter, sans-serif;
+  --heading-font-family: inter, sans-serif;
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -37,21 +37,28 @@
   --heading-font-size-xs: 22px;
 
   /* nav height */
-  --nav-height: 88px;
+  --nav-height: 165px;
+
+  /* page layout: content column plus the gutter either side of it */
+  --content-max-width: 1120px;
+  --content-gutter: 24px;
 }
 
-/* fallback fonts */
-@font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
-  src: local('Arial');
+@media (width >= 760px) {
+  :root {
+    /* nav height */
+    --nav-height: 251px;
+    --content-gutter: 40px;
+  }
 }
 
-@font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
-  src: local('Arial');
+@media (width >= 1128px) {
+  :root {
+    --content-gutter: 80px;
+  }
 }
+
+p {margin: 0;}
 
 @media (width >= 900px) {
   :root {
@@ -73,7 +80,6 @@
 body {
   display: none;
   margin: 0;
-  background-color: var(--background-color);
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
@@ -84,8 +90,9 @@ body.appear {
   display: block;
 }
 
+/* min-height rather than height: reserves space against CLS without clipping a taller nav */
 header {
-  height: var(--nav-height);
+  min-height: var(--nav-height);
 }
 
 header .header,
@@ -119,15 +126,6 @@ h4 { font-size: var(--heading-font-size-m); }
 h5 { font-size: var(--heading-font-size-s); }
 h6 { font-size: var(--heading-font-size-xs); }
 
-p,
-dl,
-ol,
-ul,
-pre,
-blockquote {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
-}
 
 code,
 pre {
@@ -142,8 +140,9 @@ pre {
   white-space: pre;
 }
 
+/* horizontal spacing is owned by the section gutter below, not by section margins */
 main > div {
-  margin: 40px 16px;
+  margin: 40px 0;
 }
 
 input,
@@ -297,23 +296,18 @@ main img {
 
 /* sections */
 main > .section {
-  margin: 40px 0;
+  margin-top: 40px;
 }
 
 main > .section > div {
-  max-width: 1200px;
+  box-sizing: border-box;
+  max-width: calc(var(--content-max-width) + (2 * var(--content-gutter)));
   margin: auto;
-  padding: 0 24px;
+  padding: 0 var(--content-gutter);
 }
 
 main > .section:first-of-type {
   margin-top: 0;
-}
-
-@media (width >= 900px) {
-  main > .section > div {
-    padding: 0 32px;
-  }
 }
 
 /* section metadata */
@@ -322,4 +316,31 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+
+
+/* the two columns sit inside the shared gutter, so the grid carries it and the
+   wrappers drop the padding they would otherwise get from `main > .section > div` */
+.section.listing-details-container {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 400px;
+  gap: 80px;
+  max-width: calc(var(--content-max-width) + (2 * var(--content-gutter)));
+  margin: 40px auto 0;
+  padding: 0 var(--content-gutter);
+}
+
+.section.listing-details-container > div {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (width <= 900px) {
+  .section.listing-details-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
 }

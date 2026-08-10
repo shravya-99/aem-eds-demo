@@ -1,0 +1,186 @@
+.booking-card {
+  width: 100%;
+  max-width: 400px;
+  color: #222;
+}
+
+.booking-card-fees {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 56px;
+  margin-bottom: 24px;
+  padding: 0 24px;
+  border: 1px solid #ebebeb;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 6px 16px rgb(0 0 0 / 8%);
+}
+
+.booking-card-fees-icon img {
+  display: block;
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.booking-card-fees strong {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.booking-card-card {
+  padding: 24px;
+  border: 1px solid #ebebeb;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 6px 16px rgb(0 0 0 / 10%);
+}
+
+.booking-card-price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.booking-card-price s {
+  color: #6a6a6a;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.booking-card-price strong {
+  font-size: 22px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.booking-card-price span {
+  color: #222;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.booking-card-dates {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  overflow: hidden;
+  border: 1px solid #b0b0b0;
+  border-radius: 8px 8px 0 0;
+}
+
+.booking-card-date {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 12px;
+}
+
+.booking-card-date + .booking-card-date {
+  border-left: 1px solid #b0b0b0;
+}
+
+.booking-card-date strong,
+.booking-card-guests strong {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.booking-card-date span,
+.booking-card-guests > span > span {
+  margin-top: 2px;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.booking-card-guests {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #b0b0b0;
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+  background: #fff;
+  color: #222;
+  text-align: left;
+  cursor: pointer;
+}
+
+.booking-card-guests > span:first-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-card-guests svg {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+}
+
+/* Airbnb's CTA gradient */
+.booking-card-reserve {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 16px;
+  border: 0;
+  border-radius: 8px;
+  background: linear-gradient(to right, #e61e4d 0%, #e31c5f 50%, #d70466 100%);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.booking-card-reserve:hover {
+  filter: brightness(0.95);
+}
+
+.booking-card-message {
+  margin: 16px 0 0;
+  color: #222;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* scoped to the block so the colour wins over the global `a:any-link` rule */
+.booking-card .booking-card-report {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+  color: #6a6a6a;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.booking-card .booking-card-report:hover {
+  color: #222;
+}
+
+.booking-card-report span:last-child {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.booking-card-report-icon img {
+  display: block;
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+@media (width <= 900px) {
+  .booking-card {
+    max-width: none;
+  }
+}

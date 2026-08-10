@@ -19,7 +19,17 @@
 }
 
 .carousel-seeall-arrow {
-  font-size: var(--body-font-size-s);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--light-color);
+  color: var(--text-color) !important;
+  cursor: pointer;
 }
 
 .carousel-seeall-arrow:hover {
@@ -126,7 +136,7 @@
   border-radius: 14px;
   background-color: #ffffffe6;
   font-size: var(--body-font-size-xs);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .carousel-card-body {

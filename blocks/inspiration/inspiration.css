@@ -1,0 +1,86 @@
+.inspiration {
+  padding: 24px 0;
+}
+
+.inspiration-title {
+  margin: 0 0 16px;
+  font-size: var(--heading-font-size-s);
+}
+
+.inspiration-tabs {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  border-bottom: 1px solid #0000001a;
+  -webkit-overflow-scrolling: touch;
+}
+
+.inspiration-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.inspiration-tab {
+  flex-shrink: 0;
+  margin: 0;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0 0 12px;
+  background: none;
+  color: var(--dark-color);
+  font: inherit;
+  font-size: var(--body-font-size-s);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.inspiration-tab:hover {
+  color: var(--text-color);
+}
+
+.inspiration-tab-active {
+  border-bottom-color: var(--text-color);
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.inspiration-panel {
+  padding-top: 24px;
+}
+
+.inspiration-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px 16px;
+}
+
+.inspiration-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.inspiration-item strong {
+  font-size: var(--body-font-size-s);
+  font-weight: 600;
+}
+
+.inspiration-item span {
+  font-size: var(--body-font-size-xs);
+  color: var(--dark-color);
+}
+
+@media (width >= 600px) {
+  .inspiration-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .inspiration {
+    padding: 32px 0;
+  }
+
+  .inspiration-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}

@@ -1,143 +1,298 @@
-header .nav-wrapper {
-  background-color: var(--light-color);
-  border-bottom: 1px solid #0000001a;
-  width: 100%;
-  z-index: 2;
-}
+.header {
+  --header-pink: #ff385c;
+  --header-text: #222;
+  --header-muted: #717171;
 
-header nav {
   box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin: auto;
-  max-width: 1264px;
-  height: var(--nav-height);
-  padding: 0 24px;
-  font-family: var(--body-font-family);
+  width: 100%;
+  padding: 18px var(--content-gutter) 22px;
+  border-bottom: 1px solid #ebebeb;
+  background: #fff;
+  color: var(--header-text);
 }
 
-header nav a:any-link {
-  color: var(--text-color);
+.header-top {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+/* colours are scoped to the block so they win over the global `a:any-link` rule */
+.header .header-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  width: max-content;
+  color: var(--header-pink);
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1px;
   text-decoration: none;
 }
 
-header nav p {
-  margin: 0;
-  line-height: 1;
+.header-logo svg {
+  width: 32px;
+  height: 32px;
+  fill: currentcolor;
 }
 
-header nav .nav-categories {
-  flex: 1 1 auto;
-  min-width: 0;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+.header-categories {
+  display: none;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 34px;
 }
 
-header nav .nav-categories ul {
+.header .header-category {
+  position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 24px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  white-space: nowrap;
+  gap: 5px;
+  min-width: 76px;
+  padding: 0 5px 16px;
+  color: var(--header-muted);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-header nav .nav-categories li {
-  padding-bottom: 8px;
+.header .header-category:hover {
+  color: var(--header-text);
+  text-decoration: none;
 }
 
-header nav .nav-categories a {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: var(--body-font-size-xs);
-  color: var(--dark-color);
-}
-
-header nav .nav-categories .icon,
-header nav .nav-categories picture {
-  display: flex;
-  width: 24px;
-  height: 24px;
-}
-
-header nav .nav-categories picture img {
-  width: 100%;
-  height: 100%;
+.header-category-image {
+  width: 42px;
+  height: 42px;
   object-fit: contain;
 }
 
-header nav .nav-categories-active {
-  box-shadow: 0 2px 0 0 var(--text-color);
-}
-
-header nav .nav-categories-active a {
-  color: var(--text-color);
-  font-weight: 600;
-}
-
-header nav .nav-actions {
-  flex-shrink: 0;
-}
-
-header nav .nav-actions .default-content-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-header nav .nav-actions p {
-  display: flex;
-}
-
-header nav .nav-action-text {
-  display: none;
-  font-size: var(--body-font-size-xs);
-  font-weight: 600;
+.header-category-label {
   white-space: nowrap;
 }
 
-header nav .nav-action-icon {
+.header .header-category.is-active {
+  color: var(--header-text);
+  font-weight: 600;
+}
+
+.header-category.is-active::after {
+  content: "";
+  position: absolute;
+  right: 5px;
+  bottom: 0;
+  left: 5px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--header-text);
+}
+
+.header-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 14px;
+}
+
+.header .header-host {
+  display: none;
+  margin-right: 10px;
+  color: var(--header-text);
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.header .header-host:hover {
+  text-decoration: underline;
+}
+
+.header .header-round-button {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  padding: 0;
+  border-radius: 50%;
+  background: #f7f7f7;
+  color: var(--header-text);
+  text-decoration: none;
+}
+
+.header .header-round-button:hover {
+  background: #eee;
+  text-decoration: none;
+}
+
+.header-round-button-image {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.header-search {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
+  width: min(100%, 1008px);
+  height: 62px;
+  margin: 20px auto 0;
+  padding: 0 10px 0 12px;
+  border: 1px solid #d7d7d7;
+  border-radius: 42px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 10%);
+}
+
+.header-search-field {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  min-width: 0;
+  height: 100%;
+  padding: 0 8px;
+  border: 0;
+  background: none;
+  color: var(--header-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.header-search-label {
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.header-search-value {
+  max-width: 100%;
+  overflow: hidden;
+  color: var(--header-muted);
+  font-size: 14px;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.header-search-divider {
+  flex: 0 0 1px;
+  width: 1px;
+  height: 30px;
+  background: #ddd;
+}
+
+.header-search-button {
+  display: grid;
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  padding: 0;
+  border: 0;
   border-radius: 50%;
-  background-color: var(--background-color);
+  background: #e51043;
+  color: #fff;
+  cursor: pointer;
 }
 
-header nav .nav-action-icon:hover {
-  background-color: #0000001a;
+.header-search-button:hover {
+  filter: brightness(0.94);
 }
 
-@media (width >=600px) {
-  header nav .nav-action-text {
-    display: block;
-  }
+.header-search-button svg {
+  width: 25px;
+  height: 25px;
+  fill: none;
+  stroke: currentcolor;
+  stroke-width: 2;
+  stroke-linecap: round;
 }
 
-@media (width >=900px) {
-  header nav {
-    gap: 24px;
-    padding: 0 40px;
+@media (width >= 760px) {
+  .header {
+    padding: 28px var(--content-gutter) 40px;
   }
 
-  header nav .nav-categories ul {
-    gap: 40px;
+  .header-top {
+    grid-template-columns: 180px minmax(0, 1fr) 220px;
+    align-items: start;
+    min-height: 70px;
   }
 
-  header nav .nav-categories .icon,
-  header nav .nav-categories picture {
-    width: 32px;
-    height: 32px;
+  .header .header-logo {
+    font-size: 25px;
   }
 
-  header nav .nav-action-icon {
+  .header-categories {
+    display: flex;
+    gap: 14px;
+  }
+
+  .header .header-category {
+    min-width: 68px;
+  }
+
+  .header-actions {
+    padding-top: 6px;
+  }
+
+  .header .header-round-button {
     width: 48px;
     height: 48px;
+  }
+
+  .header-search {
+    height: 78px;
+    margin-top: 22px;
+    padding-left: 30px;
+  }
+
+  .header-search-field {
+    padding: 0 18px;
+  }
+
+  .header-search-label {
+    font-size: 14px;
+  }
+
+  .header-search-value {
+    font-size: 16px;
+  }
+
+  .header-search-divider {
+    height: 38px;
+  }
+
+  .header-search-button {
+    flex-basis: 58px;
+    width: 58px;
+    height: 58px;
+  }
+}
+
+@media (width >= 1100px) {
+  .header-top {
+    grid-template-columns: 220px minmax(0, 1fr) 300px;
+  }
+
+  .header-categories {
+    gap: 34px;
+  }
+
+  .header .header-category {
+    min-width: 76px;
+  }
+
+  .header .header-host {
+    display: inline-block;
   }
 }

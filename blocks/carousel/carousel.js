@@ -48,7 +48,9 @@ function buildCard(row) {
   if (bodyCell) bodyCell.className = 'carousel-card-body';
 
   const paragraphs = bodyCell ? splitIntoLines(bodyCell) : [];
-  const badge = paragraphs.find((p) => !p.querySelector('a') && p.querySelector('strong'));
+  const badge = paragraphs.find(
+    (p) => !p.querySelector('a') && p.querySelector('strong'),
+  );
   const titlePara = paragraphs.find((p) => p.querySelector('a'));
   const priceLine = paragraphs.find((p) => p !== badge && p !== titlePara);
 
@@ -121,7 +123,7 @@ export default function decorate(block) {
     arrow.className = 'carousel-seeall-arrow';
     arrow.href = seeAllHref;
     arrow.setAttribute('aria-label', 'See all');
-    arrow.innerHTML = '&#8594;';
+    arrow.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 4; overflow: visible;"><g fill="none"><path d="M28 16H2M17 4l11.3 11.3a1 1 0 0 1 0 1.4L17 28"></path></g></svg>';
     title.append(arrow);
   }
 
@@ -141,7 +143,11 @@ export default function decorate(block) {
   }
 
   track.querySelectorAll('picture > img').forEach((img) => {
-    img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '400' }]));
+    img
+      .closest('picture')
+      .replaceWith(
+        createOptimizedPicture(img.src, img.alt, false, [{ width: '400' }]),
+      );
   });
 
   block.replaceChildren(header, track);
