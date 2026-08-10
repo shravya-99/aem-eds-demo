@@ -41,9 +41,13 @@ function splitIntoLines(container) {
 function buildCard(row) {
   const li = document.createElement('li');
   li.className = 'carousel-item';
-  while (row.firstElementChild) li.append(row.firstElementChild);
 
-  const [imageCell, bodyCell] = li.children;
+  const link = document.createElement('a');
+  link.className = 'carousel-card-link';
+  while (row.firstElementChild) link.append(row.firstElementChild);
+  li.append(link);
+
+  const [imageCell, bodyCell] = link.children;
   if (imageCell) imageCell.className = 'carousel-card-image';
   if (bodyCell) bodyCell.className = 'carousel-card-body';
 
@@ -53,6 +57,11 @@ function buildCard(row) {
   );
   const titlePara = paragraphs.find((p) => p.querySelector('a'));
   const priceLine = paragraphs.find((p) => p !== badge && p !== titlePara);
+
+  // the card link's href comes from the title, but the title itself becomes
+  // plain text below since an <a> can't be nested inside the card's own <a>
+  const titleLink = titlePara?.querySelector('a');
+  if (titleLink) link.href = titleLink.getAttribute('href') || '#';
 
   if (badge) {
     badge.className = 'carousel-card-badge';
@@ -83,7 +92,7 @@ function buildCard(row) {
 
     const titleText = document.createElement('span');
     titleText.className = 'carousel-card-title-text';
-    titleText.append(...titlePara.childNodes);
+    titleText.append(...(titleLink ? titleLink.childNodes : titlePara.childNodes));
     title.append(titleText);
 
     if (ratingText) {
@@ -94,6 +103,7 @@ function buildCard(row) {
     }
 
     titlePara.replaceWith(title);
+    link.setAttribute('aria-label', titleText.textContent.trim());
   }
 
   if (imageCell) {
