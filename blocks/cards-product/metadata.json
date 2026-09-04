@@ -1,0 +1,39 @@
+{
+  "variantName": "cards-product",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-09-04T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.citi.com/credit-cards/view-all-credit-cards",
+    "originPage": "View all credit cards listing page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "wide",
+    "purpose": "product",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "badge + image + name + feature-list + details-link + apply-cta",
+    "buttonCount": 2,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "product listing grids",
+      "credit card / financial product grids",
+      "catalog pages with repeating product tiles that have image, title, features and CTAs"
+    ],
+    "notSuitableFor": [
+      "text-only feature lists without images",
+      "single hero or banner content",
+      "side-by-side comparison of exactly two items (use columns)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/credit-cards/view-all-credit-cards"],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-04T00:00:00.000Z"
+  }
+}
