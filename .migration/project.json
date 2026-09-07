@@ -1,0 +1,11 @@
+{
+  "type": "da",
+  "sites": {
+    "aem-eds-demo": {
+      "previewOrg": "shravya-99",
+      "previewSite": "aem-eds-demo",
+      "contentHostUrl": "https://content.da.live/shravya-99/aem-eds-demo/",
+      "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json"
+    }
+  }
+}

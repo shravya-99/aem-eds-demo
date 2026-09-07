@@ -1,0 +1,24 @@
+{
+  "metadata": {
+    "projectType": "da"
+  },
+  "templates": [
+    {
+      "name": "credit-cards",
+      "urls": [
+        "https://www.citi.com/credit-cards/view-all-credit-cards"
+      ],
+      "representativeUrl": "https://www.citi.com/credit-cards/view-all-credit-cards",
+      "description": "Citi 'View all credit cards' listing page. Body content only: page intro heading + CTA (default content), legal disclaimer bar (default content), result count/filter label (default content, interactive filter dropped), and a grid of repeating credit-card product tiles mapped to the cards-product block.",
+      "urlPattern": "/credit-cards/*",
+      "blocks": [
+        {
+          "name": "cards-product",
+          "instances": [
+            "#card_group_0_section cds-tile.cds-tile-component"
+          ]
+        }
+      ]
+    }
+  ]
+}
